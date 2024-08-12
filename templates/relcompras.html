@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Compras</title>
+
+    <style>
+
+        html, body {
+            height: 100%;
+            margin: 3px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: orange;
+        }
+
+        header {
+            background-color: orange;
+            color: #333;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul.esquerda {
+            margin-right: auto;
+        }
+
+        nav ul.direita {
+            margin-left: auto;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main {
+            flex: 1; 
+            padding: 20px; 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            max-width: 300px;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .formulario {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lista-favorito {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px; 
+        }
+
+        .item-favorito {
+            border: 2px solid black;
+            padding: 20px; 
+            margin: 10px;
+            width: 30%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .imagem {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 10px; 
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px; 
+            }
+
+            nav ul.esquerda, nav ul.direita {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            nav ul.esquerda {
+                order: 1;
+            }
+
+            nav ul.direita {
+                order: 2;
+                margin-top: 10px;
+            }
+
+            .item-favorito {
+                width: 45%;
+                margin: 10px auto; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+                margin: 0 10px;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .item-favorito {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VaptVupt - Comprou Chegou, Agilidade e Preço Baixo</h1>
+        <nav>
+            <ul class="esquerda">
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/anuncio">Anúncios</a></li>
+                <li><a href="/config/categoria">Categorias</a></li>
+                <li><a href="/favoritos">Favoritos</a></li>
+                <li><a href="/duvida">Dúvidas</a></li>
+                <li><a href="/relatorio/venda">Relatório de Vendas</a></li>
+                <li><a href="/relatorio/compra">Relatório de Compras</a></li>
+            </ul>
+            <ul class="direita">
+                <li><a href="/cadastro">Cadastrar</a></li>
+                <li><a href="/login">Usuário</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Relatório de Compras</h2>
+            <form action="generate-purchases-report.html" method="POST">
+                <label for="start-date">Data de Início:</label>
+                <input type="date" id="start-date" name="start-date" required>
+                <label for="end-date">Data de Fim:</label>
+                <input type="date" id="end-date" name="end-date" required>
+                <button type="submit">Gerar Relatório</button>
+            </form>
+            <div class="purchases-report">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 VaptVupt</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Vaptvupt - Comprou Chegou</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: orange;
+        }
+
+        header {
+            background-color: orange;
+            color: #333;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul.esquerda {
+            margin-right: auto;
+        }
+
+        nav ul.direita {
+            margin-left: auto;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            margin-bottom: 4px;
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px); 
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .form-actions a,
+        .form-actions input[type="submit"] {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff; 
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .form-actions a {
+            background-color: #6c757d; 
+        }
+
+        .form-actions a:hover {
+            background-color: #5a6268; 
+        }
+
+        .form-actions input[type="submit"] {
+            background-color: #007bff;
+        }
+
+        .form-actions input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            nav ul.esquerda, nav ul.direita {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            nav ul.esquerda {
+                order: 1;
+            }
+
+            nav ul.direita {
+                order: 2;
+                margin-top: 10px;
+            }
+
+            .item-favorito {
+                width: 45%;
+                margin: 10px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+                margin: 0 10px;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .item-favorito {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vaptvupt - Comprou Chegou</h1>
+    </header>
+
+    <main class="main">
+        <form action="/usuario/editar/{{ usuario.id }}" method="post">
+            <h2>Edição de {{titulo}}</h2>
+            <p>
+                <label for="user">Username</label>
+                <input type="text" id="user" name="user" value="{{usuario.nome}}">
+            </p>
+
+            <p>
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" value="{{usuario.cpf}}">
+            </p>
+
+            <p>
+                <label for="end">Endereço</label>
+                <input type="text" id="end" name="end" value="{{usuario.end}}">
+            </p>
+
+            <p>
+                <label for="fone">Telefone</label>
+                <input type="text" id="fone" name="fone" value="{{usuario.fone}}">
+            </p>
+
+            <p>
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" value="{{usuario.email}}">
+            </p>
+
+            <p>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="{{usuario.senha}}">
+            </p>
+
+            <div class="form-actions">
+                <a href="{{ url_for('usuario') }}">Cancelar</a>
+                <input type="submit" value="Alterar">
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VaptVupt</p>
+    </footer>
+</body>
+</html>
