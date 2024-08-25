@@ -3,192 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<head>
-    <title>Vaptvupt - Comprou Chegou</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: orange;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        header {
-            background-color: orange;
-            color: #333;
-            padding: 20px 10px;
-            text-align: center;
-            width: 100%;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 1000px;
-            box-sizing: border-box;
-        }
-
-        h4 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #fff;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        textarea,
-        select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #333;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            form {
-                max-width: 100%;
-                padding: 10px;
-            }
-
-            table {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h4 {
-                font-size: 1.5em;
-            }
-
-            table {
-                font-size: 12px;
-            }
-
-            form {
-                max-width: 100%;
-                padding: 10px;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Vaptvupt - Editar Categoria</title>
 </head>
 
 <body>
     <header>
-        <h1>Vaptvupt - Comprou Chegou</h1>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto"> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cad/anuncio">Anúncios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/config/categoria">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/duvida">Dúvidas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/relatorios/vendas">Relatório de Vendas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/relatorios/vendas">Relatório de Compras</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cad/usuario">Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Usuário</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <h2>Edição de {{ titulo }}</h2>
-        <form action="/categoria/editar/{{ categoria.id }}" method="post">
-            <h2>Edicao de {{titulo}}</h2>
-            <p>
+        <h2>Editar Categoria</h2>
+        <form action="/categoria/editar/{{ categoria.id }}" method="post" class="form">
+            <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" value="{{categoria.nome}}">
-            </p>
+                <input type="text" id="nome" name="nome" value="{{ categoria.nome }}" required>
+            </div>
 
-            <p>
+            <div class="form-group">
                 <label for="desc">Descrição</label>
-                <input type="text" id="desc" name="desc" value="{{categoria.desc}}">
-            </p>
+                <input type="text" id="desc" name="desc" value="{{ categoria.desc }}" required>
+            </div>
 
             <div class="form-actions">
-                <a href="{{ url_for('categoria') }}">Cancelar</a>
-                <input type="submit" value="Alterar">
+                <input type="button" value="Cancelar" onclick="cancelar()">
+                <input type="submit" value="Salvar">
             </div>
         </form>
     </main>
 
-    <footer>
+    <footer class="footer">
         <p>&copy; 2024 VaptVupt</p>
     </footer>
+    <script>
+        function cancelar() {
+            window.location.href = '{{ url_for("categoria") }}';
+        }
+    </script>
 </body>
 </html>

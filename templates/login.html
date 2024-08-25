@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Bem-vindo à VaptVupt! Aqui Comprou Chegou!!</h1>
+            <h1>Vaptvupt - Comprou Chegou</h1>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,6 +18,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto"> 
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Página Inicial</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/cad/anuncio">Anúncios</a>
                             </li>
@@ -39,9 +42,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/cad/usuario">Cadastrar</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Usuário</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -50,16 +50,24 @@
     </header>
 
     <main class="container">
-        <div class="vertical">
-            <a href="{{ url_for('usuario') }}" class="nav-link">Cadastro Usuário</a>
-            <a href="{{ url_for('anuncio') }}" class="nav-link">Cadastro Anúncio</a>
-            <a href="{{ url_for('categoria') }}" class="nav-link">Config Categoria</a>
-            <a href="{{ url_for('relCompras') }}" class="nav-link">Relatório de Compras</a>
-            <a href="{{ url_for('relVendas') }}" class="nav-link">Relatório de Vendas</a>
-            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
-        </div>
+        <h2>{{ titulo }}</h2>
+        <form action="/login" method="post" class="form">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Logar">
+            </div>
+        </form>
     </main>
-    
+
     <footer class="footer">
         <p>&copy; 2024 VaptVupt</p>
     </footer>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Vaptvupt - Perguntas</title>
+</head>
+
+<body>
+    <header>
+        <h1>Vaptvupt - Perguntas sobre {{ anuncio.nome }}</h1>
+    </header>
+
+    <main class="main-content">
+        <h2>Perguntas</h2>
+
+        <form action="{{ url_for('perguntas_anuncio', anuncio_id=anuncio.id) }}" method="post" class="form">
+            <div class="form-group">
+                <label for="texto">Pergunta</label>
+                <input type="text" id="texto" name="texto" required>
+            </div>
+            <input type="button" value="Cancelar" onclick="cancelar()">
+            <input type="submit" value="Adicionar Pergunta">
+        </form>
+
+        <div class="perguntas">
+            {% if perguntas %}
+                <ul>
+                    {% for pergunta in perguntas %}
+                        <li>{{ pergunta.texto }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Não há perguntas para este anúncio.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 VaptVupt</p>
+    </footer>
+    <script>
+        function cancelar() {
+            window.location.href = '{{ url_for("anuncio") }}';
+        }
+    </script>
+</body>
+
+</html>

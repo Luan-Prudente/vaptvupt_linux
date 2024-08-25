@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<head>
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>Vaptvupt - Comprou Chegou</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: orange;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        header {
-            background-color: orange;
-            color: #333;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        h4 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        p {
-            margin: 10px 0;
-        }
-
-        a {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #007bff;
-            border-radius: 4px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-
-        a:hover {
-            background-color: #0056b3;
-        }
-
-
-    </style>
 </head>
 
 <body>
     <header>
-        <h1>Desculpe não encontramos, vamos voltar de onde paramos?</h1>
-    </header>
+        <div class="container">
+            <h1>Desculpe, não encontramos, vamos voltar de onde paramos?</h1>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mr-auto"> 
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Página Inicial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cad/anuncio">Anúncios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/config/categoria">Categorias</a>
+                            </li>
 
-    <main>
-        <p><a href="{{ url_for('index') }}">Pagina Inicial</a></p>
-    </main>
-    <footer>
-        <p>&copy; 2024 VaptVupt</p>
-    </footer>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/relatorios/vendas">Relatório de Vendas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/relatorios/vendas">Relatório de Compras</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cad/usuario">Cadastrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Usuário</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 </body>
+
 </html>

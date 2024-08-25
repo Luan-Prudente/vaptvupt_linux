@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
-    <title>Vaptvupt - Comprou Chegou</title>
+    <title>Favoritos - Vaptvupt</title>
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -23,7 +22,8 @@
                             <a class="nav-link" href="/cad/anuncio">Anúncios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/favoritos">Favoritos</a>
+                            <a class="nav-link" href="/config/categoria">Categorias</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/relatorios/vendas">Relatório de Vendas</a>
                         </li>
@@ -44,45 +44,29 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Cadastro de {{titulo}}</h2>
-        <form action="/categoria/criar" method="post" class="form">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-
-            <div class="form-group">
-                <label for="desc">Descrição</label>
-                <input type="text" id="desc" name="desc" required>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Cadastrar">
-            </div>
-        </form>
-
-        <h2>Categorias Cadastradas</h2>
+    <main class="main-content">
+        <h2>Meus Favoritos</h2>
         <table class="anuncios-table">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Descrição</th>
-                    <th>Editar</th>
-                    <th>Deletar</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Usuário</th>
                 </tr>
             </thead>
             <tbody>
-                {% for categoria in categorias %}
-                    <tr>
-                        <td>{{ categoria.nome }}</td>
-                        <td>{{ categoria.desc }}</td>
-                        <td><a href="{{ url_for('editarcategoria', id=categoria.id) }}"><input type="submit" value="Editar"></a></td>
-                        <td>
-                            <form action="{{ url_for('deletarcategoria', id=categoria.id) }}" method="post" style="display:inline;" onsubmit="return confirmDelete();"><input type="submit" value="Deletar"></button>
-                            </form>
-                        </td>
-                    </tr>
+                {% for anuncio in anuncios %}
+                <tr>
+                    <td>{{ anuncio.nome }}</td>
+                    <td>{{ anuncio.desc }}</td>
+                    <td>{{ anuncio.qtd }}</td>
+                    <td>{{ anuncio.preco }}</td>
+                    <td>{{ anuncio.categoria.nome if anuncio.categoria else 'N/A' }}</td>
+                    <td>{{ anuncio.usuario.nome if anuncio.usuario else 'N/A' }}</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -91,11 +75,5 @@
     <footer class="footer">
         <p>&copy; 2024 VaptVupt</p>
     </footer>
-
-    <script>
-        function confirmDelete() {
-            return confirm("Você tem certeza de que deseja deletar esta categoria?");
-        }
-    </script>
 </body>
 </html>
